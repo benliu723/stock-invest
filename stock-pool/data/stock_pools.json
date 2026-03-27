@@ -1,9 +1,0 @@
-{
-  "pools": {
-    "默认股票池": {
-      "name": "默认股票池",
-      "is_default": true,
-      "members": []
-    }
-  }
-}

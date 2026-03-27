@@ -11,8 +11,8 @@ Manage persistent stock pools (股票池/股票组，以下统称“股票池”
 
 ## Source of truth
 
-- State file: `/Users/benliu/Documents/Playground/stock-pool/data/stock_pools.json`
-- Script: `/Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py`
+- State file: `data/stock_pools.json` (generated on first access; do not commit it)
+- Script: `scripts/stock_pools.py`
 
 Always use the script instead of editing JSON manually.
 
@@ -33,8 +33,10 @@ Always use the script instead of editing JSON manually.
 Prefer:
 
 ```bash
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py text-command "<自然语言指令>"
+python3 scripts/stock_pools.py text-command "<自然语言指令>"
 ```
+
+Run commands relative to this skill directory. If the working directory differs, resolve `data/` and `scripts/` relative to the skill path first.
 
 Use direct subcommands only when they are clearer than `text-command`.
 
@@ -75,18 +77,18 @@ High-confidence patterns already supported by `text-command`（支持“股票�
 ## Minimal command reference
 
 ```bash
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py create-pool 储能
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py add-stock 储能 上能电气
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py remove-stock 储能 上能电气
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py show-pool 储能
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py show-all-stocks
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py follow-stock 上能电气 --pools 默认池 储能
-python3 /Users/benliu/Documents/Playground/stock-pool/scripts/stock_pools.py unfollow-stock 上能电气 --pools 默认池 储能
+python3 scripts/stock_pools.py create-pool 储能
+python3 scripts/stock_pools.py add-stock 储能 上能电气
+python3 scripts/stock_pools.py remove-stock 储能 上能电气
+python3 scripts/stock_pools.py show-pool 储能
+python3 scripts/stock_pools.py show-all-stocks
+python3 scripts/stock_pools.py follow-stock 上能电气 --pools 默认池 储能
+python3 scripts/stock_pools.py unfollow-stock 上能电气 --pools 默认池 储能
 ```
 
 ## Response shape
 
-Prefer concise stateful output:
+The script returns JSON. Convert it into a concise stateful summary for the user when needed:
 
 ```markdown
 # Stock Pool: <name>

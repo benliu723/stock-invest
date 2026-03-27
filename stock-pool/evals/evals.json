@@ -5,55 +5,143 @@
       "id": 1,
       "prompt": "帮我创建一个股票组，组名为储能。",
       "expected_output": "Creates a named stock group called 储能, persists it to the canonical JSON state file, and returns an empty but explicit current-state member list.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: create_pool`.",
+        "The JSON result identifies `储能` as the created pool.",
+        "The persisted state still contains `默认股票池`.",
+        "The persisted state contains pool `储能` with an empty `members` list."
+      ]
     },
     {
       "id": 2,
       "prompt": "当前已经有一个股票组叫储能，里面是空的。将上能电气加入储能股票组中。",
       "expected_output": "Reads the saved state, adds 上能电气 to the 储能 group, writes the updated state back to disk, and returns the updated full group state with one member.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: add_stock`.",
+        "The JSON result preserves `stock_name: 上能电气` and resolves ticker `300827`.",
+        "The persisted state keeps pool `储能` and stores exactly one member `300827` in it.",
+        "The default pool remains present after the update."
+      ]
     },
     {
       "id": 3,
       "prompt": "在已经有储能股票组的前提下，再创建一个股票组，组名为光伏。",
       "expected_output": "Creates a second named stock group called 光伏 without overwriting existing groups, persists both groups, and returns the current state of 光伏.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: create_pool`.",
+        "The JSON result identifies `光伏` as the created pool.",
+        "The persisted state retains the existing pool `储能`.",
+        "The persisted state adds pool `光伏` with an empty `members` list."
+      ]
     },
     {
       "id": 4,
       "prompt": "当前已经保存了储能和光伏两个股票组。获取所有组的股票。",
       "expected_output": "Loads all saved groups from the canonical JSON state file and returns a grouped view of every group and its members, optionally with a deduplicated all-stocks summary list.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: show_all_stocks`.",
+        "The JSON result includes a grouped `pools` object for the saved pools.",
+        "The JSON result includes a deduplicated `all_stocks` array.",
+        "The JSON result reports `默认股票池` as the default pool name."
+      ]
     },
     {
       "id": 5,
       "prompt": "删除股票组 储能。",
       "expected_output": "Deletes 储能 if it exists, persists the updated state, and if it does not exist clearly tells the user the stock group does not exist.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: delete_pool` when `储能` exists.",
+        "The JSON result identifies `储能` as the deleted pool.",
+        "The persisted state no longer contains pool `储能` after deletion.",
+        "The persisted state still contains `默认股票池`."
+      ]
     },
     {
       "id": 6,
       "prompt": "股票组 储能修改为储能-2。",
       "expected_output": "Renames 储能 to 储能-2 if it exists, refuses if it is the default group, and otherwise tells the user the stock group does not exist.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: rename_pool` when `储能` exists.",
+        "The JSON result reports `pool_name: 储能` and `new_pool_name: 储能-2`.",
+        "The persisted state no longer contains key `储能` after the rename.",
+        "The persisted state contains key `储能-2` with the original members preserved."
+      ]
     },
     {
       "id": 7,
       "prompt": "储能组有哪些股票？",
       "expected_output": "Returns the saved current members of the 储能 group from persisted state.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: show_pool`.",
+        "The JSON result identifies `储能` as the requested pool.",
+        "The returned pool members match the persisted members for `储能`."
+      ]
     },
     {
       "id": 8,
       "prompt": "关注 上能电气。",
-      "expected_output": "Shows the available stock-pool options, uses 默认股票池 as the fallback if no choice is provided, and then adds 上能电气 to the selected or default pool.",
-      "files": []
+      "expected_output": "Uses 默认股票池 as the fallback when no pool is specified, persists 上能电气 into that pool, and reports the selected and updated pools.",
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: follow_stock`.",
+        "The JSON result reports `used_default_pool: true` and selects only `默认股票池`.",
+        "The JSON result resolves `上能电气` to ticker `300827`.",
+        "The persisted state stores `300827` in `默认股票池`."
+      ]
     },
     {
       "id": 9,
       "prompt": "取消关注 上能电气。",
-      "expected_output": "Shows stock-pool options, supports multi-select removal, and removes 上能电气 from the selected pools while reporting pools where it was absent.",
-      "files": []
+      "expected_output": "Returns a pool-selection payload instead of removing silently when no pool is specified, so the caller can choose where to unfollow 上能电气.",
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: unfollow_stock`.",
+        "The JSON result reports `selection_required: true` when no pool is specified.",
+        "The JSON result includes `available_pools` and `默认股票池` in the selection payload.",
+        "The persisted state is unchanged until a pool selection is provided."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "关注 上能电气到默认股票池和储能池。",
+      "expected_output": "Adds 上能电气 to 默认股票池 and 储能, auto-creates 储能 if needed, persists both updates, and reports any created pools.",
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: follow_stock`.",
+        "The JSON result selects `默认股票池` and `储能`.",
+        "The JSON result reports that `储能` was auto-created when it did not already exist.",
+        "The persisted state stores ticker `300827` in both selected pools."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "新建一个叫储能的股票池。",
+      "expected_output": "Supports 股票池 phrasing as well as 股票组 phrasing, creates 储能, persists it, and returns the new pool state.",
+      "files": [],
+      "expectations": [
+        "The 股票池 phrasing is accepted and produces `action: create_pool`.",
+        "The JSON result reports `ok: true` for creating `储能`.",
+        "The persisted state contains pool `储能` with an empty `members` list."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "从默认池和储能池取消关注上能电气。",
+      "expected_output": "Resolves pool aliases, removes 上能电气 from the selected pools, persists the updated state, and reports which pools were updated.",
+      "files": [],
+      "expectations": [
+        "The JSON result has `ok: true` and `action: unfollow_stock`.",
+        "The JSON result resolves the selected pools to `默认股票池` and `储能`.",
+        "The JSON result resolves `上能电气` to ticker `300827`.",
+        "The persisted state removes ticker `300827` from both selected pools."
+      ]
     }
   ]
 }
