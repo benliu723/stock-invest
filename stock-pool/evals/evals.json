@@ -1,0 +1,59 @@
+{
+  "skill_name": "stock-pool",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我创建一个股票组，组名为储能。",
+      "expected_output": "Creates a named stock group called 储能, persists it to the canonical JSON state file, and returns an empty but explicit current-state member list.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "当前已经有一个股票组叫储能，里面是空的。将上能电气加入储能股票组中。",
+      "expected_output": "Reads the saved state, adds 上能电气 to the 储能 group, writes the updated state back to disk, and returns the updated full group state with one member.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "在已经有储能股票组的前提下，再创建一个股票组，组名为光伏。",
+      "expected_output": "Creates a second named stock group called 光伏 without overwriting existing groups, persists both groups, and returns the current state of 光伏.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "当前已经保存了储能和光伏两个股票组。获取所有组的股票。",
+      "expected_output": "Loads all saved groups from the canonical JSON state file and returns a grouped view of every group and its members, optionally with a deduplicated all-stocks summary list.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "删除股票组 储能。",
+      "expected_output": "Deletes 储能 if it exists, persists the updated state, and if it does not exist clearly tells the user the stock group does not exist.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "股票组 储能修改为储能-2。",
+      "expected_output": "Renames 储能 to 储能-2 if it exists, refuses if it is the default group, and otherwise tells the user the stock group does not exist.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "储能组有哪些股票？",
+      "expected_output": "Returns the saved current members of the 储能 group from persisted state.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "关注 上能电气。",
+      "expected_output": "Shows the available stock-pool options, uses 默认股票池 as the fallback if no choice is provided, and then adds 上能电气 to the selected or default pool.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "取消关注 上能电气。",
+      "expected_output": "Shows stock-pool options, supports multi-select removal, and removes 上能电气 from the selected pools while reporting pools where it was absent.",
+      "files": []
+    }
+  ]
+}

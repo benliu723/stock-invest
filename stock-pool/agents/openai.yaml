@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stock Pool"
+  short_description: "Manage persistent stock pools and watchlists"
+  default_prompt: "Use $stock-pool to create, update, and query persistent stock pools across conversations."
