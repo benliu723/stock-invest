@@ -1,2 +1,6 @@
 stock-pool-workspace/
 stock-pool/data/stock_pools.json
+
+middle-east-visualizer/node_modules/
+middle-east-visualizer/dist/
+middle-east-visualizer/tsconfig.tsbuildinfo

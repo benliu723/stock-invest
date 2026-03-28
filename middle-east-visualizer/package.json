@@ -1,0 +1,21 @@
+{
+  "name": "middle-east-visualizer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "ingest": "tsx scripts/ingest.ts",
+    "capture-report": "tsx scripts/capture-report.ts",
+    "sync-report": "tsx scripts/sync-report.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  }
+}
