@@ -1,0 +1,4 @@
+interface:
+  display_name: "Middle East War Trend"
+  short_description: "Track Middle East escalation probabilities"
+  default_prompt: "Use $middle-east-war-trend to analyze Middle East war trends with escalation, stalemate, and de-escalation probabilities."

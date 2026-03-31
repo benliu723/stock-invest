@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "source-trace-audit-mode",
+  "prompt": "请基于你刚才的中东战争趋势判断，列出升级概率与持久战概率背后的关键依据，并给出数据与信息来源。我要能继续追问每个结论是由哪些来源支持的。",
+  "assertions": [
+    "The response includes key supporting evidence for the probabilities or scenario judgment.",
+    "The response includes a source list or source identifiers such as S1, S2, or similar.",
+    "The response maps at least one major conclusion back to one or more sources.",
+    "The response makes it possible for the user to follow up on where a conclusion came from."
+  ]
+}

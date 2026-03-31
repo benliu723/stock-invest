@@ -1,0 +1,65 @@
+{
+  "skill_name": "middle-east-war-trend",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请基于今天的中东局势，按信息层、事实层、市场层三层结构，推演战争持续升级、长期持久战、战争逐渐缓和三种场景的概率。请重点结合美军在中东动态、航空与航运通航情况、以及布伦特原油走势。",
+      "expected_output": "Uses the three-layer model, assigns scenario probabilities totaling 100%, identifies a primary scenario, and explains the main logic and largest uncertainty.",
+      "files": [],
+      "expectations": [
+        "The response uses the three-layer model or explicitly analyzes information, facts, and market signals.",
+        "The response provides probabilities for escalation, stalemate, and de-escalation that sum to 100%.",
+        "The response identifies a primary scenario.",
+        "The response explains the main logic and largest uncertainty."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我看到今天布伦特先涨了，但关于美军增兵和霍尔木兹通行受限的消息还在发酵。请不要直接给投资建议，先判断这更像是信息抢先、市场抢跑，还是三层一致，并给出升级、持久战、缓和的概率。",
+      "expected_output": "Correctly applies conflict-handling rules, distinguishes warning vs confirmation, and outputs normalized probabilities with concise rationale.",
+      "files": [],
+      "expectations": [
+        "The response classifies the situation using a conflict-handling label such as information-led warning, market front-running, or three-layer alignment.",
+        "The response distinguishes early warning from confirmed operational change.",
+        "The response provides probabilities for escalation, stalemate, and de-escalation that sum to 100%.",
+        "The response avoids jumping directly to investment advice before finishing the war-trend judgment."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "请把2026-02-27、2026-02-28、2026-03-02这三天按同一口径做中东战争趋势分析，对比信息层、事实层、市场层的变化，并说明为什么2月27日属于信息强但事实不够。",
+      "expected_output": "Compares the three dates using the same scoring system, highlights the transition from information-led warning to confirmed escalation, and keeps the explanation aligned with the skill's scenario framework.",
+      "files": [],
+      "expectations": [
+        "The response analyzes all three dates: 2026-02-27, 2026-02-28, and 2026-03-02.",
+        "The response compares the information, facts, and market layers across the dates using a consistent framework.",
+        "The response explains why 2026-02-27 is an example of strong information but insufficient factual confirmation.",
+        "The response shows the transition from warning conditions to confirmed escalation."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "请基于你刚才的中东战争趋势判断，列出升级概率与持久战概率背后的关键依据，并给出数据与信息来源。我要能继续追问每个结论是由哪些来源支持的。",
+      "expected_output": "Adds source-trace support with evidence identifiers, maps major judgments to sources, and keeps the response auditable for follow-up questions.",
+      "files": [],
+      "expectations": [
+        "The response includes key supporting evidence for the probabilities or scenario judgment.",
+        "The response includes a source list or source identifiers such as S1, S2, or similar.",
+        "The response maps at least one major conclusion back to one or more sources.",
+        "The response makes it possible for the user to follow up on where a conclusion came from."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "请把2026-02-27到2026-03-02之间的中东战争趋势做一个小型回测，输出趋势结论、按日期的三场景概率表，并给我可用于画图的数据。",
+      "expected_output": "Produces a backtest-style answer with a date range, trend conclusion, date-by-date probability table, turning-point explanation, and chart-ready data.",
+      "files": [],
+      "expectations": [
+        "The response includes a backtest range or date span.",
+        "The response includes a date-by-date probability table or equivalent structured history.",
+        "The response includes chart-ready data such as CSV-style lines or similar tabular plotting data.",
+        "The response explains at least one turning point or trend change in the series."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "warning-vs-front-running",
+  "prompt": "我看到今天布伦特先涨了，但关于美军增兵和霍尔木兹通行受限的消息还在发酵。请不要直接给投资建议，先判断这更像是信息抢先、市场抢跑，还是三层一致，并给出升级、持久战、缓和的概率。",
+  "assertions": [
+    "The response classifies the situation using a conflict-handling label such as information-led warning, market front-running, or three-layer alignment.",
+    "The response distinguishes early warning from confirmed operational change.",
+    "The response provides probabilities for escalation, stalemate, and de-escalation that sum to 100%.",
+    "The response avoids jumping directly to investment advice before finishing the war-trend judgment."
+  ]
+}

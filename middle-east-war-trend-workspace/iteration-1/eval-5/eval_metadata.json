@@ -1,0 +1,11 @@
+{
+  "eval_id": 5,
+  "eval_name": "backtest-chart-ready-output",
+  "prompt": "请把2026-02-27到2026-03-02之间的中东战争趋势做一个小型回测，输出趋势结论、按日期的三场景概率表，并给我可用于画图的数据。",
+  "assertions": [
+    "The response includes a backtest range or date span.",
+    "The response includes a date-by-date probability table or equivalent structured history.",
+    "The response includes chart-ready data such as CSV-style lines or similar tabular plotting data.",
+    "The response explains at least one turning point or trend change in the series."
+  ]
+}

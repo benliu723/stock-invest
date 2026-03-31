@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "historical-transition-comparison",
+  "prompt": "请把2026-02-27、2026-02-28、2026-03-02这三天按同一口径做中东战争趋势分析，对比信息层、事实层、市场层的变化，并说明为什么2月27日属于信息强但事实不够。",
+  "assertions": [
+    "The response analyzes all three dates: 2026-02-27, 2026-02-28, and 2026-03-02.",
+    "The response compares the information, facts, and market layers across the dates using a consistent framework.",
+    "The response explains why 2026-02-27 is an example of strong information but insufficient factual confirmation.",
+    "The response shows the transition from warning conditions to confirmed escalation."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "daily-three-layer-probability",
+  "prompt": "请基于今天的中东局势，按信息层、事实层、市场层三层结构，推演战争持续升级、长期持久战、战争逐渐缓和三种场景的概率。请重点结合美军在中东动态、航空及航运通航情况、以及布伦特原油走势。",
+  "assertions": [
+    "The response uses the three-layer model or explicitly analyzes information, facts, and market signals.",
+    "The response provides probabilities for escalation, stalemate, and de-escalation that sum to 100%.",
+    "The response identifies a primary scenario.",
+    "The response explains the main logic and largest uncertainty."
+  ]
+}
