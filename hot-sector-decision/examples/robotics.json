@@ -1,0 +1,25 @@
+{
+  "hot_theme": "机器人",
+  "leader_stock": {
+    "name": "龙头A",
+    "trend_strength": 88,
+    "focus_strength": 90,
+    "pullback_quality": 85
+  },
+  "candidate_stocks": [
+    {
+      "name": "补涨A",
+      "recent_strength": 84,
+      "position_vs_leader": 30,
+      "extension_risk": 24,
+      "in_position": false
+    },
+    {
+      "name": "补涨B",
+      "recent_strength": 76,
+      "position_vs_leader": 68,
+      "extension_risk": 79,
+      "in_position": false
+    }
+  ]
+}
