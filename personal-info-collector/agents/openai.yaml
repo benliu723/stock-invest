@@ -1,0 +1,7 @@
+interface:
+  display_name: "Personal Info Collector"
+  short_description: "Collect topic sources into reviewed records"
+  default_prompt: "Use $personal-info-collector to set up a topic, collect source updates into inbox, or process reviewed records."
+
+policy:
+  allow_implicit_invocation: true

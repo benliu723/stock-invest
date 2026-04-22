@@ -1,0 +1,59 @@
+{
+  "skill_name": "personal-info-collector",
+  "evals": [
+    {
+      "id": 1,
+      "scenario": "初始化 AI 投资 topic",
+      "turns": [
+        {
+          "user": "请在信息系统中初始化 AI 投资。",
+          "expected_behavior": "在 personal-info-collector/topics/ai-investing 下创建或提出 sources.yaml；使用 lower-kebab-case topic ID；sources.yaml 是 topic 的数据源列表，用于 prompt / program crawler 的输入；初始化时默认使用 sources: [] 空模板；可以建议 starter sources，但写入前必须得到用户确认；每个 source 必须包含 url_type: page 或 feed；解释 collect -> inbox status: pending、process -> status: draft 或 records + status: archive 流程。"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "scenario": "收集 AI 投资新信息",
+      "turns": [
+        {
+          "user": "帮我收集今天 AI 投资相关的新信息，先不要处理。",
+          "expected_behavior": "读取 sources.yaml，基于每个 source 的 url 和 url_type 实际访问来源获取当前信息；参考全部 inbox/*.yaml 并优先使用 candidate.url 去重，将每条非重复 candidate 写成 status: pending 的 inbox/input-*.yaml，报告 skipped、failed 或 duplicate candidates，并且不创建 records。"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "scenario": "先列出待处理信息，再处理用户选中的一条",
+      "turns": [
+        {
+          "user": "请罗列 AI 投资的所有待处理信息。",
+          "expected_behavior": "读取 inbox/*.yaml，筛选 topic=ai-investing 且 status=pending 的条目；列出每条的编号、文件路径、标题、来源、发布时间或收集时间、简短摘要；不修改文件；请用户选择要处理的条目。"
+        },
+        {
+          "user": "处理第 1 条，不值得保留的就丢弃，需要保留的就审核成记录。",
+          "expected_behavior": "使用上一轮用户选中的 pending inbox item；如果决定丢弃，更新该 inbox item 为 status: draft 并填写 processing.processed_at 和 processing.decision_reason；如果决定正式审核，写入只引用 reviewed_from 的 YAML record，record 内含 accepted/rejected 审核状态，accepted 带 confidence；record 写入成功后才将 inbox item 更新为 status: archive；报告决策和新状态。"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "scenario": "设置公众人物动态的定时收集",
+      "turns": [
+        {
+          "user": "我想每天工作日上午自动追踪特朗普、马斯克等人的最新公开动态。",
+          "expected_behavior": "将用户意图映射到 public-figures 这类 topic；如果 topic 或 sources.yaml 不存在，先说明需要创建或维护对应 sources；设置收集型 automation，而不是处理型 automation；automation 的任务内容应读取该 topic 的 sources.yaml，基于 source 的 url 和 url_type 获取信息，去重已有 inbox/*.yaml，把新信息写成 status: pending 的 inbox YAML；不要自动创建 records，也不要自动把 inbox 更新为 draft 或 archive；schedule 由 automation 配置承载，不写进 automation prompt。"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "scenario": "为已有 topic 设置定时收集",
+      "turns": [
+        {
+          "user": "帮我把 AI 投资设置成每个工作日上午自动收集。",
+          "expected_behavior": "识别已有 topic ai-investing；读取 topics/ai-investing/sources.yaml；设置收集型 automation，而不是处理型 automation；automation 的任务内容只负责读取 sources，基于 source 的 url 和 url_type 获取信息，去重 inbox/*.yaml，写入 status: pending 的 inbox YAML；不要创建 records，不要把 inbox 更新为 draft 或 archive；不要重复初始化 topic，也不要重写 sources.yaml。"
+        }
+      ]
+    }
+  ]
+}
