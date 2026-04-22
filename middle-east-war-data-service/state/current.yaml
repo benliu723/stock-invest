@@ -1,0 +1,32 @@
+---
+as_of: '2026-04-19T09:00:00+08:00'
+source_notes:
+- note-2026-04-19-01
+- note-2026-04-19-02
+actors:
+- actor: 美国
+  actor_weight: 4
+  factors:
+  - id: us_avoid_regional_war
+    text: 避免中东全面失控
+    kind: core
+    weight: 5
+    direction: 僵持
+  - id: us_prevent_iran_nuclear
+    text: 阻止伊朗拥核
+    kind: stage
+    weight: 4
+    direction: 升级
+- actor: 伊朗
+  actor_weight: 4
+  factors:
+  - id: iran_preserve_regime_security
+    text: 避免政权安全受损
+    kind: core
+    weight: 5
+    direction: 僵持
+  - id: iran_retaliate_against_israel
+    text: 对以色列进行反击
+    kind: stage
+    weight: 4
+    direction: 升级

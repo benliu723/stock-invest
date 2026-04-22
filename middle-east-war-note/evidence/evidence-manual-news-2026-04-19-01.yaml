@@ -1,0 +1,17 @@
+---
+id: evidence-manual-news-2026-04-19-01
+type: news
+captured_at: '2026-04-19T08:40:00+08:00'
+event_at: '2026-04-19T08:40:00+08:00'
+confidence: 3
+summary: 中东战争相关新闻被记录为候选新闻 evidence。
+source:
+  id: manual
+  name: Manual entry
+  url: manual://evidence-manual-news-2026-04-19-01
+details:
+  headline: 中东局势维持高压
+  outlet: Manual entry
+  key_points:
+  - 区域航线和航运风险溢价仍然存在。
+  - 市场对冲突升级保持警惕，但没有进入全面断裂状态。

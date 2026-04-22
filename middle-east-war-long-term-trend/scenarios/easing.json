@@ -1,0 +1,29 @@
+{
+  "name": "easing",
+  "actor_profiles": [
+    {
+      "actor": "美国",
+      "actor_weight": 100,
+      "factors": [
+        {"name": "压低地区失控风险", "weight": 95, "direction": "缓和"},
+        {"name": "稳定能源与盟友预期", "weight": 88, "direction": "缓和"}
+      ]
+    },
+    {
+      "actor": "以色列",
+      "actor_weight": 80,
+      "factors": [
+        {"name": "降低多线作战压力", "weight": 90, "direction": "缓和"},
+        {"name": "保留基本威慑", "weight": 40, "direction": "僵持"}
+      ]
+    },
+    {
+      "actor": "伊朗",
+      "actor_weight": 75,
+      "factors": [
+        {"name": "缓解外部压力", "weight": 93, "direction": "缓和"},
+        {"name": "避免政权安全受损", "weight": 86, "direction": "僵持"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "escalation",
+  "actor_profiles": [
+    {
+      "actor": "美国",
+      "actor_weight": 95,
+      "factors": [
+        {"name": "阻止伊朗拥核", "weight": 100, "direction": "升级"},
+        {"name": "维护地区威慑信誉", "weight": 85, "direction": "升级"}
+      ]
+    },
+    {
+      "actor": "以色列",
+      "actor_weight": 100,
+      "factors": [
+        {"name": "打击伊朗核设施", "weight": 100, "direction": "升级"},
+        {"name": "重建压制优势", "weight": 92, "direction": "升级"}
+      ]
+    },
+    {
+      "actor": "伊朗",
+      "actor_weight": 85,
+      "factors": [
+        {"name": "避免政权安全受损", "weight": 80, "direction": "僵持"},
+        {"name": "保持地区威慑能力", "weight": 78, "direction": "升级"}
+      ]
+    }
+  ]
+}

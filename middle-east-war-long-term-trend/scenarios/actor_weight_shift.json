@@ -1,0 +1,26 @@
+{
+  "name": "actor-weight-shift",
+  "actor_profiles": [
+    {
+      "actor": "美国",
+      "actor_weight": 95,
+      "factors": [
+        {"name": "避免中东全面失控", "weight": 95, "direction": "僵持"}
+      ]
+    },
+    {
+      "actor": "以色列",
+      "actor_weight": 75,
+      "factors": [
+        {"name": "打击伊朗核设施", "weight": 60, "direction": "升级"}
+      ]
+    },
+    {
+      "actor": "伊朗",
+      "actor_weight": 80,
+      "factors": [
+        {"name": "避免政权安全受损", "weight": 90, "direction": "僵持"}
+      ]
+    }
+  ]
+}

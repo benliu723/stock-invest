@@ -1,0 +1,15 @@
+---
+id: evidence-manual-statement-2026-04-19-01
+type: statement
+captured_at: '2026-04-19T08:20:00+08:00'
+event_at: '2026-04-19T08:20:00+08:00'
+confidence: 3
+summary: 特朗普相关公开表态被记录为候选人物言论 evidence。
+source:
+  id: manual
+  name: Manual entry
+  url: manual://evidence-manual-statement-2026-04-19-01
+details:
+  speaker: 特朗普
+  quote: 中东局势需要保持强硬但避免失控。
+  context: 示例人物言论记录，用于说明 statement evidence 结构。

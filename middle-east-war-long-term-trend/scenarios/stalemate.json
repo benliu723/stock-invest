@@ -1,0 +1,29 @@
+{
+  "name": "stalemate",
+  "actor_profiles": [
+    {
+      "actor": "美国",
+      "actor_weight": 90,
+      "factors": [
+        {"name": "避免中东全面失控", "weight": 95, "direction": "僵持"},
+        {"name": "阻止伊朗拥核", "weight": 80, "direction": "升级"}
+      ]
+    },
+    {
+      "actor": "以色列",
+      "actor_weight": 95,
+      "factors": [
+        {"name": "维持长期威慑", "weight": 90, "direction": "僵持"},
+        {"name": "压制代理人网络", "weight": 70, "direction": "升级"}
+      ]
+    },
+    {
+      "actor": "伊朗",
+      "actor_weight": 85,
+      "factors": [
+        {"name": "避免政权安全受损", "weight": 92, "direction": "僵持"},
+        {"name": "保持地区威慑能力", "weight": 75, "direction": "升级"}
+      ]
+    }
+  ]
+}

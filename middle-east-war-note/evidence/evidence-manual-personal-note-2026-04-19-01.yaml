@@ -1,0 +1,14 @@
+---
+id: evidence-manual-personal-note-2026-04-19-01
+type: personal_note
+captured_at: '2026-04-19T08:50:00+08:00'
+event_at: '2026-04-19T08:50:00+08:00'
+confidence: 3
+summary: 个人记录认为中东局势仍处于高压但未全面失控状态。
+source:
+  id: manual
+  name: Manual entry
+  url: manual://evidence-manual-personal-note-2026-04-19-01
+details:
+  note_text: 个人记录认为中东局势仍处于高压但未全面失控状态。
+  basis: 来自无法公开爬取的信息和个人观察。

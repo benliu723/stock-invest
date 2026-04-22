@@ -17,6 +17,17 @@
 
 它服务于投资，目标是帮助形成对战争大趋势的认同，从而辅助判断未来更值得关注的投资方向。
 
+## v1 实现状态
+
+当前目录已经落地了一个可运行的 v1 分析器：
+
+- 输入：`ActorProfile + factors(direction)`
+- 输出：`长期主趋势`、`长期形态`、`趋势形成原因`、`改判条件`
+- 范围：仅覆盖 `美国 / 以色列 / 伊朗`
+- 特征：使用 `AW / FW / D / I / S(d)` 的方向加权汇总算法
+
+当前版本不再依赖 `relationships`，而是要求每个 factor 显式指定唯一主方向：`缓和 / 僵持 / 升级`。分析器据此直接计算三个方向总分，并由最高总分给出长期主趋势。
+
 ## 与 `中东局势分析` skill 的区别
 
 `中东局势分析` skill 关注“现在”，核心任务是从新闻、事实、市场等短期信息中提炼当前战争更偏向哪个方向，减少信息噪音，逼近当前更真实的状态。
@@ -52,3 +63,119 @@
 
 - `v5：验证与展示`
   对模型进行回测、比较与可视化，验证解释力并提升结果可读性。
+
+## 当前接口
+
+### ActorProfile
+
+```json
+{
+  "actor": "美国",
+  "actor_weight": 100,
+  "factors": [
+    {"name": "阻止伊朗拥核", "weight": 95, "direction": "升级"},
+    {"name": "避免中东全面失控", "weight": 90, "direction": "僵持"}
+  ]
+}
+```
+
+- `actor_weight`
+  - `0-100` 独立强度分
+  - 在公式中归一化为 \(AW_a \in [0,1]\)
+- `factor.weight`
+  - `0-100` 独立强度分
+  - 在公式中归一化为 \(FW_{a,f} \in [0,1]\)
+- `factor.direction`
+  - 只能取 `缓和 / 僵持 / 升级` 之一
+  - 在公式中记为 \(D_{a,f}\)
+
+## 判断流程
+
+分析器固定执行以下步骤：
+
+1. 读取三方 `ActorProfile`
+2. 将 `actor_weight` 和 `factor.weight` 归一化为 \(AW_a\) 与 \(FW_{a,f}\)
+3. 为每个 factor 指定唯一方向 \(D_{a,f}\)
+4. 构造方向选择函数 \(I_{a,f}(d)\)
+5. 对每个方向 \(d \in \{\text{缓和}, \text{僵持}, \text{升级}\}\) 计算总分：
+
+\[
+S(d)=\sum_{a\in\mathcal{A}}\sum_{f\in\mathcal{F}_a} AW_a \cdot FW_{a,f} \cdot I_{a,f}(d)
+\]
+
+6. 由最高总分给出长期主趋势：
+
+\[
+T=\arg\max_{d\in\mathcal{D}} S(d)
+\]
+
+输出时长期形态固定映射为：
+
+- `缓和 -> 低冲突缓和均衡`
+- `僵持 -> 高压持久战`
+- `升级 -> 失稳上行态势`
+
+## 核心公式
+
+方向集合：
+
+\[
+\mathcal{D}=\{\text{缓和},\text{僵持},\text{升级}\}
+\]
+
+方向选择函数：
+
+\[
+I_{a,f}(d)=
+\begin{cases}
+1, & D_{a,f}=d \\
+0, & D_{a,f}\neq d
+\end{cases}
+\qquad d\in\mathcal{D}
+\]
+
+并满足：
+
+\[
+\sum_{d\in\mathcal{D}} I_{a,f}(d)=1
+\]
+
+## 使用方式
+
+运行分析：
+
+```bash
+python3 middle-east-war-long-term-trend/analyzer.py \
+  middle-east-war-long-term-trend/scenarios/stalemate.json
+```
+
+运行测试：
+
+```bash
+python3 -m unittest discover \
+  -s middle-east-war-long-term-trend/tests \
+  -p 'test_*.py'
+```
+
+## 示例场景
+
+当前提供 4 个可直接运行的示例场景：
+
+- `scenarios/stalemate.json`
+- `scenarios/easing.json`
+- `scenarios/escalation.json`
+- `scenarios/actor_weight_shift.json`
+
+它们分别对应：
+
+- 多数高权重 factor 指向 `僵持`
+- 多个 actor 的高权重 factor 同时指向 `缓和`
+- 高影响 actor 的高权重 factor 主要指向 `升级`
+- 调整单个 `actor_weight` 或 `factor.weight` 后，结论发生偏移
+
+## 局限
+
+- v1 要求分析者为每个 factor 显式指定唯一方向
+- v1 不自动从文本中抽取 factor 方向
+- v1 不做动态权重、黑天鹅扰动和更多参与方扩展
+- v1 当前是方向加权汇总模型，不是完整的博弈论均衡模型

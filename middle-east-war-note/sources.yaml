@@ -1,0 +1,81 @@
+---
+sources:
+- id: ap-middle-east
+  name: AP Middle East
+  kind: news_source
+  url: https://apnews.com/hub/middle-east
+  enabled: true
+  parser: page
+  default_confidence: 3
+  url_contains:
+  - /article/
+  title_contains:
+  - Iran
+  - Israel
+  - Middle East
+  - Gaza
+  - Hamas
+  - Houthi
+  - Houthis
+  - Hormuz
+  - Ormuz
+  - nuclear
+  max_items: 10
+- id: reuters-middle-east
+  name: Reuters Middle East
+  kind: news_source
+  url: https://www.reuters.com/world/middle-east/
+  enabled: false
+  parser: page
+  default_confidence: 3
+  url_contains:
+  - /world/middle-east/
+  title_contains:
+  - Iran
+  - Israel
+  - Middle East
+  - Gaza
+  - Hamas
+  - Houthi
+  - Houthis
+  - Hormuz
+  - nuclear
+  max_items: 10
+- id: white-house-statements
+  name: White House Statements
+  kind: statement_source
+  url: https://www.whitehouse.gov/briefings-statements/
+  enabled: true
+  parser: page
+  default_confidence: 3
+  url_contains:
+  - /briefings-statements/2026/
+  title_contains:
+  - Iran
+  - Israel
+  - Middle East
+  - Gaza
+  - Hamas
+  - Houthi
+  - Houthis
+  - Hormuz
+  - nuclear
+  max_items: 10
+- id: trump-public-statements
+  name: Trump Public Statements
+  kind: statement_source
+  url: https://trumpstruth.org/feed
+  enabled: true
+  parser: rss
+  default_confidence: 3
+  title_contains:
+  - Iran
+  - Israel
+  - Middle East
+  - Gaza
+  - Hamas
+  - Houthi
+  - Houthis
+  - Hormuz
+  - nuclear
+  max_items: 10
