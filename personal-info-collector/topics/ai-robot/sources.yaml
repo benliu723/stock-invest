@@ -1,0 +1,78 @@
+---
+topic:
+  id: ai-robot
+  name: AI Robot Investing
+  purpose: 关注物理机器人及 AI 赋能机器人后是否产生实际商业、技术和运营变革的投资相关信号。
+sources:
+  - id: nvidia-robotics
+    name: NVIDIA Robotics
+    type: official
+    url: https://www.nvidia.com/en-us/industries/robotics/
+    url_type: page
+    notes: 关注 physical AI、Isaac、机器人基础模型、仿真训练、边缘推理和生态合作，判断 AI 能力落地机器人产业链的节奏。
+  - id: tesla-ai
+    name: Tesla AI
+    type: official
+    url: https://www.tesla.com/AI
+    url_type: page
+    notes: 关注 Optimus、端到端学习、量产路径、工厂应用和资本开支线索；只采集与物理机器人和自动化相关内容。
+  - id: figure-ai-news
+    name: Figure AI News
+    type: official
+    url: https://www.figure.ai/news
+    url_type: page
+    notes: 关注 humanoid robot 客户部署、生产扩张、融资、AI 模型合作和真实工作场景证据。
+  - id: agility-robotics-news
+    name: Agility Robotics News
+    type: official
+    url: https://agilityrobotics.com/news
+    url_type: page
+    notes: 关注 Digit、物流和仓储部署、客户案例、制造规模和安全认证等商业化信号。
+  - id: apptronik-news
+    name: Apptronik News
+    type: official
+    url: https://apptronik.com/news
+    url_type: page
+    notes: 关注 humanoid robot Apollo、合作伙伴、试点部署、制造和产品迭代。
+  - id: unitree-news
+    name: Unitree News
+    type: official
+    url: https://www.unitree.com/news/
+    url_type: page
+    notes: 关注四足和人形机器人产品迭代、价格下降、量产能力和全球市场拓展。
+  - id: boston-dynamics-news
+    name: Boston Dynamics News
+    type: official
+    url: https://bostondynamics.com/news/
+    url_type: page
+    notes: 关注 Atlas、Spot、Stretch 及实际行业部署；区分展示性演示和可复制商业应用。
+  - id: sanctuary-ai-news
+    name: Sanctuary AI News
+    type: official
+    url: https://www.sanctuary.ai/news
+    url_type: page
+    notes: 关注通用目的机器人、teleoperation 到 autonomous 的演进、客户试点和人机协作场景。
+  - id: the-robot-report
+    name: The Robot Report
+    type: news
+    url: https://www.therobotreport.com/
+    url_type: page
+    notes: 垂直行业来源，关注机器人融资、并购、客户部署、产品发布、制造能力和行业竞争格局。
+  - id: ieee-spectrum-robotics
+    name: IEEE Spectrum Robotics
+    type: research
+    url: https://spectrum.ieee.org/robotics
+    url_type: page
+    notes: 关注技术成熟度、研究突破和工程限制，辅助判断 AI 赋能机器人是否接近真实应用。
+  - id: international-federation-of-robotics
+    name: International Federation of Robotics News
+    type: research
+    url: https://ifr.org/ifr-press-releases
+    url_type: page
+    notes: 关注全球机器人装机、区域需求、产业统计和结构性趋势，作为投资判断的行业基线。
+  - id: arxiv-robotics
+    name: arXiv Robotics
+    type: research
+    url: https://rss.arxiv.org/rss/cs.RO
+    url_type: feed
+    notes: 关注 embodied AI、robot learning、manipulation、locomotion、sim-to-real 和 foundation models for robotics；过滤纯理论且缺少落地含义的论文。
