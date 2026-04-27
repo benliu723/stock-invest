@@ -13,6 +13,16 @@
     },
     {
       "id": 2,
+      "scenario": "为 AI 投资提出数据源候选",
+      "turns": [
+        {
+          "user": "请先帮我想一批 AI 投资主题可用的数据源，但先不要直接写入。",
+          "expected_behavior": "读取 references/source-selection.md；如果存在 topics/ai-investing/source-brief.md 则同时读取，如果不存在则在回复中给出简短的内联方向假设；基于全局规则和 topic brief 或内联方向假设提出 source candidates，而不是直接改写 sources.yaml；每个 candidate 按固定结构给出 name、type、url、url_type、matched_global_rule、matched_topic_rule、source_quality、expected_signal、risk 和 recommendation；source 必须是稳定的信息入口；只接受 page 或 feed 两种 url_type；只在用户确认后写入 recommendation=include 的 candidates。"
+        }
+      ]
+    },
+    {
+      "id": 3,
       "scenario": "收集 AI 投资新信息",
       "turns": [
         {
@@ -22,7 +32,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 4,
       "scenario": "先列出待处理信息，再处理用户选中的一条",
       "turns": [
         {
@@ -36,7 +46,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "scenario": "设置公众人物动态的定时收集",
       "turns": [
         {
@@ -46,7 +56,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "scenario": "为已有 topic 设置定时收集",
       "turns": [
         {

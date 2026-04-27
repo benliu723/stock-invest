@@ -11,6 +11,7 @@ personal-info-collector/
   topics/
     <topic-id>/
       sources.yaml
+      source-brief.md # optional
   inbox/
     input-<topic-id>-YYYY-MM-DD-NNN.yaml
   records/
@@ -19,12 +20,13 @@ personal-info-collector/
 
 ## Topic Layout
 
-topic 目录只负责来源配置：
+topic 目录只负责来源配置和可选的数据源方向说明：
 
 ```text
 topics/
   <topic-id>/
     sources.yaml
+    source-brief.md # optional
 ```
 
 所有路径都相对于 `personal-info-collector/` skill 项目根目录。

@@ -6,9 +6,17 @@
 2. 在当前 skill 项目的 `topics/` 下创建或维护 `topics/<topic-id>/`。
 3. 如果缺少 `sources.yaml`，创建一个空 sources 模板，包含 `topic` 和 `sources: []`。
 4. 将用户意图写入 `topic.purpose`。
-5. 可以建议 starter sources，但写入 `sources.yaml` 前必须得到用户确认。
-6. 添加 sources 时按 `references/sources-schema.md` 填写；每个 source 必须包含 `url_type`。
-7. 保留解释 source 价值的 notes。
+
+## Determine Sources
+
+1. 先读取 `references/source-selection.md`。
+2. 如果存在 `topics/<topic-id>/source-brief.md`，同时读取；如果不存在，先在回复中给出简短的内联方向假设。
+3. 根据全局 source 规则和 topic brief 或内联方向假设提出 source candidates，不要直接写入 `sources.yaml`。
+4. 每个 candidate 按 `references/source-selection.md` 的 candidate shape 说明 `type`、匹配规则、质量、预期信号、风险和 `recommendation`。
+5. source 必须是稳定的信息入口，而不是单篇文章、抽象主题词或临时搜索结果。
+6. 当前阶段只接受 `url_type: page` 或 `url_type: feed`。
+7. 得到用户确认后，只把确认采纳的 `include` candidates 写入 `sources.yaml`。
+8. 写入时按 `references/sources-schema.md` 填写，并保留解释 source 价值的 notes。
 
 ## Collect Into Inbox
 
