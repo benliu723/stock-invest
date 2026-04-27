@@ -30,8 +30,8 @@ inbox item -> discard -> status: draft
 | 创建或维护 topic | `references/layout.md`, `references/sources-schema.md` |
 | 确定数据源 | `references/source-selection.md`, `references/workflows.md`, `references/sources-schema.md` |
 | 添加、删除、审阅 sources | `references/source-selection.md`, `references/sources-schema.md` |
-| 收集最新信息 | `references/workflows.md`, `assets/collect-topic.prompt.md` |
-| 处理 inbox item | `references/workflows.md`, `references/record-schema.md`, `assets/process-inbox.prompt.md` |
+| 收集最新信息 | `references/workflows.md`, `references/collect-topic.md` |
+| 处理 inbox item | `references/workflows.md`, `references/record-schema.md`, `references/process-inbox.md` |
 | 设置定时自动化 | `references/automation.md` |
 
 ## Operating Rules
@@ -51,5 +51,5 @@ inbox item -> discard -> status: draft
 - `references/record-schema.md`：已处理/已审核 record 的 schema。
 - `references/workflows.md`：创建、维护、收集、处理流程边界。
 - `references/automation.md`：Codex 自动化指导。
-- `assets/collect-topic.prompt.md`：可复用的信息收集 prompt。
-- `assets/process-inbox.prompt.md`：可复用的 inbox 处理 prompt。
+- `references/collect-topic.md`：可复用的信息收集 prompt。
+- `references/process-inbox.md`：可复用的 inbox 处理 prompt。

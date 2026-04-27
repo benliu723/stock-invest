@@ -24,10 +24,11 @@
 
 边界：
 
-- 收集前读取全部 `inbox/*.yaml` 做去重，不论 status 是 `pending`、`draft` 还是 `archive`；去重优先使用 `candidate.url`。
-- 收集阶段只创建 `status: pending` 的 inbox item。
-- 收集阶段不写 records，也不修改已有 inbox item 的 status。
-- 具体执行步骤使用 `assets/collect-topic.prompt.md`。
+- 收集阶段只负责发现和写入新的候选原材料。
+- 读取全部 `inbox/*.yaml` 做去重，不论 status 是什么；去重优先使用 `candidate.url`。
+- 只创建 `status: pending` 的 inbox item。
+- 不写 records，也不修改已有 inbox item 的 status。
+- 具体执行步骤使用 `references/collect-topic.md`。
 
 ## Process Inbox
 
@@ -36,13 +37,10 @@
 边界：
 
 - 每个 pending item 只做两类决定：`draft` 或 `record`。
-- `draft` 表示丢弃、不正式审核：更新该 inbox item 为 `status: draft`，并填写 `processing.processed_at` 和 `processing.decision_reason`。
-- `record` 表示正式审核：创建 record，并将该 inbox item 更新为 `status: archive`，同时填写 `processing.record_id`、`processing.record_path`、`processing.processed_at` 和 `processing.decision_reason`。
-- record 内部必须设置 `review.status=accepted` 或 `review.status=rejected`。
-- accepted record 必须填写 `review.confidence`；rejected record 使用 `review.confidence=null` 并写清楚拒绝原因。
-- Process 阶段不移动 inbox 文件，只更新 YAML 字段。
-- 只有 record 文件创建成功后，才能将 inbox item 更新为 `status: archive`；失败时保持 `status: pending`。
-- 具体执行步骤使用 `assets/process-inbox.prompt.md`。
+- `draft` 表示丢弃、不正式审核；`record` 表示正式审核并沉淀为记录。
+- Process 阶段不移动 inbox 文件，只更新 inbox YAML 字段，并在需要时创建 record。
+- 只有 record 文件创建成功后，才能把 inbox item 更新为 `status: archive`；失败时保持 `status: pending`。
+- 具体执行步骤使用 `references/process-inbox.md`。
 
 ## Maintenance Review
 
